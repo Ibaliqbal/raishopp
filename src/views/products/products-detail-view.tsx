@@ -49,6 +49,7 @@ const ProductsDetailView = () => {
           <ProductsListVariant
             defaultVariant={selectedVariant}
             onChangeVariant={(variant) => setSelectedVariant(variant)}
+            withCustomSelected
           />
         </div>
         <div className="flex flex-col gap-4">

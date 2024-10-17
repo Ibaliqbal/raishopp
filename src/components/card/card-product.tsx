@@ -6,20 +6,27 @@ import { motion } from "framer-motion";
 import Image from "@/components/ui/image";
 import Link from "next/link";
 import Card from "../ui/card";
+import { TbEyeEdit } from "react-icons/tb";
 
 type Props = {
   i: number;
+  hisMine?: boolean;
 };
 
-const CardProduct = ({ i }: Props) => {
+const CardProduct = ({ i, hisMine = false }: Props) => {
   const [open, setOpen] = useState(false);
+
   return (
     <>
       <Card
         className="rounded-md border border-gray-500 group"
         layoutId={`card-${i}`}
       >
-        <Card.Image src="/Background.jpeg" layoutId={`card-${i}-image`} className="h-[300px]" />
+        <Card.Image
+          src="/Background.jpeg"
+          layoutId={`card-${i}-image`}
+          className="h-[300px]"
+        />
         <Card.Description href="/products/23" asLink>
           <h1>Nike forece Air Jordan 20{i}, SS</h1>
         </Card.Description>
@@ -28,10 +35,22 @@ const CardProduct = ({ i }: Props) => {
             <FaStar className="text-yellow-400" />
             <span>4.2</span>
           </div>
-          <FaEye
-            className="text-xl cursor-pointer"
-            onClick={() => setOpen(true)}
-          />
+          {hisMine ? (
+            <div className="flex items-center gap-3">
+              <FaEye
+                className="text-xl cursor-pointer"
+                onClick={() => setOpen(true)}
+              />
+              <Link href={"/my/store/products/23/update"}>
+                <TbEyeEdit className="text-xl cursor-pointer" />
+              </Link>
+            </div>
+          ) : (
+            <FaEye
+              className="text-xl cursor-pointer"
+              onClick={() => setOpen(true)}
+            />
+          )}
         </Card.Footer>
       </Card>
       <Modal open={open} setOpen={setOpen}>

@@ -25,7 +25,7 @@ const StoreProductsView = () => {
       </div>
       <div className="w-full grid grid-cols-3 gap-4">
         {Array.from({ length: 7 }).map((_, i) => (
-          <CardProduct key={i} i={i} />
+          <CardProduct key={i} i={i} hisMine />
         ))}
       </div>
     </section>

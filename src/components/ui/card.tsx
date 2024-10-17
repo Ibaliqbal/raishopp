@@ -44,11 +44,33 @@ const CardImage = ({
   );
 };
 
+const CardIcon = ({
+  src,
+  className,
+  ...rest
+}: ComponentPropsWithoutRef<"div"> &
+  MotionProps & {
+    src: string;
+  }) => {
+  return (
+    <motion.div className={cn(className)} {...rest}>
+      <Image
+        src={src}
+        alt="Product Image"
+        width={200}
+        height={200}
+        figureClassName="w-full h-full relative rounded-md overflow-hidden"
+        className="w-full h-full absolute inset-0 rounded-md object-contain"
+      />
+    </motion.div>
+  );
+};
+
 const CardDescription = ({
   children,
   className,
   href,
-  asLink,
+  asLink = false,
   ...rest
 }: ComponentPropsWithoutRef<"a" | "div"> & {
   children: ReactNode;
@@ -96,5 +118,6 @@ const CardFooter = ({
 Card.Description = CardDescription;
 Card.Footer = CardFooter;
 Card.Image = CardImage;
+Card.Icon = CardIcon;
 
 export default Card;

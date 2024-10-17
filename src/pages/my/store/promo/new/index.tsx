@@ -1,11 +1,11 @@
 import UserLayout from '@/layouts/user-layout'
-import StoreNewsView from '@/views/my/store/news/store-news-view'
+import StoreCreatePromoView from '@/views/my/store/promo/store-create-promo-view'
 import React from 'react'
 
 const Page = () => {
   return (
     <UserLayout>
-      <StoreNewsView />
+      <StoreCreatePromoView />
     </UserLayout>
   )
 }

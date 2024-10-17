@@ -6,7 +6,6 @@ import {
   BsCart,
   BsCartFill,
 } from "react-icons/bs";
-import { RiBillLine, RiBillFill } from "react-icons/ri";
 
 import SideLink from "@/components/side-link";
 import SideListsStore from "@/components/store/side-lists";
@@ -31,12 +30,6 @@ const SidebarUser = () => {
         iconActive={<BsCartFill />}
         iconNonActive={<BsCart />}
         text="Cart"
-      />
-      <SideLink
-        href="/my/transaction"
-        iconActive={<RiBillFill />}
-        iconNonActive={<RiBillLine />}
-        text="Transaction"
       />
       <SideListsStore />
     </aside>

@@ -13,7 +13,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { FaCheck } from "react-icons/fa";
 import { resetPasswordSchema, TResetPasswordT } from "@/types/user";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import SubmitButton from "./submit-button";
 
 const FormChangePassword = () => {
   const [error, setError] = useState("");
@@ -81,15 +81,11 @@ const FormChangePassword = () => {
             </FormItem>
           )}
         />
-        <Button
-          variant="primary"
-          type="submit"
+        <SubmitButton<TResetPasswordT>
+          textBtn={form.formState.isSubmitting ? "Resetting..." : "Reset"}
+          formHook={form}
           className="self-start"
-          size="lg"
-          disabled={form.formState.isSubmitting}
-        >
-          {form.formState.isSubmitting ? "Resetting..." : "Reset"}
-        </Button>
+        />
       </form>
     </Form>
   );

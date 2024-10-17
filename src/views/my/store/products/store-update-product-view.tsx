@@ -3,7 +3,7 @@ import FormProduct from "@/layouts/form/form-product";
 import { useRouter } from "next/router";
 import { FaArrowLeft } from "react-icons/fa";
 
-const StoreCreateProductView = () => {
+const StoreProductUpdateView = () => {
   const router = useRouter();
   return (
     <main className="container max-w-7xl p-4 flex flex-col gap-4 pb-10">
@@ -16,12 +16,12 @@ const StoreCreateProductView = () => {
         Back
       </Button>
       <FormProduct
-        title="Create your new product"
-        textBtn="Create"
+        title="Update your product"
+        textBtn="Update"
         onSubmit={() => {}}
       />
     </main>
   );
 };
 
-export default StoreCreateProductView;
+export default StoreProductUpdateView;

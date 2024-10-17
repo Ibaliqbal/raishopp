@@ -18,6 +18,7 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        descurative: "var(--descurative)",
       },
       borderRadius: {
         lg: "var(--radius)",

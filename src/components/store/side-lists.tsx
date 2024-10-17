@@ -15,6 +15,7 @@ import {
 } from "../ui/accordion";
 import { useRouter } from "next/router";
 import { IoStorefront, IoStorefrontOutline } from "react-icons/io5";
+import { RiCoupon3Line, RiCoupon3Fill } from "react-icons/ri";
 import SideLink from "../side-link";
 
 const SideListsStore = () => {
@@ -45,6 +46,13 @@ const SideListsStore = () => {
             text="Products"
             iconActive={<BsBagPlusFill />}
             iconNonActive={<BsBagPlus />}
+            className="text-xl"
+          />
+          <SideLink
+            href="/my/store/promo"
+            text="Promo"
+            iconActive={<RiCoupon3Fill />}
+            iconNonActive={<RiCoupon3Line />}
             className="text-xl"
           />
           <SideLink

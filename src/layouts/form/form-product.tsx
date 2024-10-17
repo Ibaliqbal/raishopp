@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -17,18 +16,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { createProductSchema, CreateProductSchemaT } from "@/types/product";
+import { productSchema, ProductSchemaT } from "@/types/product";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
-// import FormVariantProduct from "./form-variant-product";
 import ProductsListVariant from "@/components/products/products-list-variant";
 import FormVariantProduct from "./form-variant-product";
 import { categories } from "@/utils/constant";
+import SubmitButton from "./submit-button";
 
-const FormProduct = () => {
-  const form = useForm<CreateProductSchemaT>({
-    resolver: zodResolver(createProductSchema),
+type Props = {
+  onSubmit: (data: ProductSchemaT) => void;
+  title: string;
+  textBtn: string;
+};
+
+const FormProduct = ({ title, textBtn }: Props) => {
+  const form = useForm<ProductSchemaT>({
+    resolver: zodResolver(productSchema),
     defaultValues: {
       name: "",
       description: "",
@@ -37,15 +42,13 @@ const FormProduct = () => {
     },
   });
 
-  const onSubmit = (data: CreateProductSchemaT) => {
+  const onSubmit = (data: ProductSchemaT) => {
     console.log(data);
   };
 
   return (
     <section className="flex flex-col gap-4">
-      <h1 className="text-2xl font-bold text-center">
-        Create your new product
-      </h1>
+      <h1 className="text-2xl font-bold text-center">{title}</h1>
       <Form {...form}>
         <form
           className="flex flex-col gap-4"
@@ -137,14 +140,7 @@ const FormProduct = () => {
               </FormItem>
             )}
           />
-          <Button
-            disabled={form.formState.isSubmitting}
-            type="submit"
-            variant="primary"
-            size="lg"
-          >
-            Create
-          </Button>
+          <SubmitButton<ProductSchemaT> formHook={form} textBtn={textBtn} />
         </form>
       </Form>
     </section>

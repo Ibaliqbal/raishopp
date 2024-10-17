@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { updateProfileSchema, UpdateProfileT } from "@/types/user";
-import { Button } from "@/components/ui/button";
+import SubmitButton from "./submit-button";
 
 const FormUpdateUser = () => {
   const form = useForm<UpdateProfileT>({
@@ -102,9 +102,11 @@ const FormUpdateUser = () => {
             )}
           />
         </section>
-        <Button size="lg" variant="primary" className="self-start">
-          Submit
-        </Button>
+        <SubmitButton<UpdateProfileT>
+          formHook={form}
+          textBtn="Submit"
+          className="self-start"
+        />
       </form>
     </Form>
   );

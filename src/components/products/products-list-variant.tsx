@@ -7,9 +7,14 @@ import { variants, VariantT } from "@/utils/constant";
 type Props = {
   defaultVariant?: VariantT;
   onChangeVariant: (variant: VariantT) => void;
+  withCustomSelected?: boolean;
 };
 
-const ProductsListVariant = ({ onChangeVariant, defaultVariant }: Props) => {
+const ProductsListVariant = ({
+  onChangeVariant,
+  defaultVariant,
+  withCustomSelected = false,
+}: Props) => {
   const [open, setOpen] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState(
     defaultVariant ? defaultVariant.type : ""
@@ -21,7 +26,9 @@ const ProductsListVariant = ({ onChangeVariant, defaultVariant }: Props) => {
         {variants.map((variant, i) => (
           <ProductsVariant
             key={i}
-            isSelected={variant.type === selectedVariant}
+            isSelected={
+              withCustomSelected ? variant.type === selectedVariant : false
+            }
             variant={variant}
             onClick={(v: string) => {
               setOpen(true);
